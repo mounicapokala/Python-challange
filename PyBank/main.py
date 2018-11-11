@@ -2,6 +2,7 @@ import os
 import csv
 
 csvpath="/Users/mouni/Documents/GitHub/Python-challange/PyBank/Budget_data.csv"
+output_path="/Users/mouni/Documents/GitHub/Python-challange/PyBank/PyBank.txt"
 with open(csvpath) as csv_file:
     csv_reader=csv.reader(csv_file,delimiter=",")
     csv_header=next(csv_file)
@@ -43,3 +44,12 @@ print("Total Profit/Losses: $"+str(tot_profit_loss))
 print("Average change: $%4.2f" %average_change)
 print(f"Greatest increase in profits: {great_diff_month} (${max_diff})")
 print(f"Greatest decrease in profits: {least_diff_month} (${min_diff})")
+
+with open(output_path,'a') as out:
+    out.write("Financial Analysis\n------------------\n")
+    out.write("Total Months: "+str(count_months)+"\n")
+    out.write("Total Profit/Losses: $"+str(tot_profit_loss)+"\n")
+    out.write("Average change: $%4.2f" %average_change+"\n")
+    out.write(f"Greatest increase in profits: {great_diff_month} (${max_diff})\n")
+    out.write(f"Greatest decrease in profits: {least_diff_month} (${min_diff})\n")
+
